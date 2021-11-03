@@ -3,31 +3,34 @@ st= 'photo.jpg, Warsaw, 2013-09-05 14:08:15\njohn.png, London, 2015-06-20 15:13:
 def solution(st):
   sts=st.split("\n")
   cities=[s.split(",")[1] for s in sts]
+  suff=[s.split(",")[0][-4:] for s in sts]
 
   cities_=cities[:]
   reform=[]
+  ind=0
   for city in cities:
     num=str(cities.count(city)-cities_.count(city)+1)
     num=num.zfill(2)
     cities_.remove(city)
     # print(city+num+".jpg")
-    reform.append(city+num+".jpg")
+    reform.append(city+num+suff[ind])
+    ind+=1
 
   return reform
 
 #>solution(st)
 # [' Warsaw01.jpg',
-#  ' London01.jpg',
-#  ' Warsaw02.jpg',
+#  ' London01.png',
+#  ' Warsaw02.png',
 #  ' Paris01.jpg',
 #  ' Paris02.jpg',
 #  ' London02.jpg',
-#  ' Paris03.jpg',
+#  ' Paris03.png',
 #  ' Warsaw03.jpg',
-#  ' Warsaw04.jpg',
+#  ' Warsaw04.png',
 #  ' Warsaw05.jpg',
 #  ' Warsaw06.jpg',
 #  ' Warsaw07.jpg',
-#  ' Warsaw08.jpg',
-#  ' Warsaw09.jpg',
+#  ' Warsaw08.png',
+#  ' Warsaw09.png',
 #  ' Warsaw10.jpg']
